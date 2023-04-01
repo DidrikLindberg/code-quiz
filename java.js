@@ -5,7 +5,7 @@
 var startButton = document.getElementById("startQuiz");
 var timerEl = document.getElementById("timer");
 
-var secondsLeft = 0;
+var secondsLeft = 10;
 
 
 startButton.addEventListener("click", function () {
