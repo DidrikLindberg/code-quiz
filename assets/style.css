@@ -1,25 +1,43 @@
 
 #startQuiz {
     background-color: #f1f1f1;
+    /* display center horizontally on the bottom */
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    
+
+    padding: 20px;
+    border: 1px solid #000000;
+    color: #ff0000;
+    margin-top: 20px;
+}
+
+main {
+    background-color: #b1b1b1;
+    width: 50%;
+    height:500px;
+    margin: auto;
+    position: relative;
+    padding: 20px;
+    border: 1px solid #000000;
+    color: #ff0000;
+    margin-top: 20px;
+    
+}
+
+#timer {
+    background-color: #f1f1f1;
     /* display on right corner */
+    position: absolute;
+    right: 0;
+    top: 0;
+
     padding: 20px;
     border: 1px solid #000000;
-    color: #000000;
+    color: #ff0000;
     margin-top: 20px;
 }
 
-.start {
-    background-color: #050505;
-    padding: 20px;
-    border: 1px solid #000000;
-    color: #000000;
-    margin-top: 20px;
-}
 
-main h1 {
-    color: #b80e0e;
-    font-size: 2em;
-    font-weight: 700;
-    margin: 0 0 0.5em;
-    text-align: center;
-}
+

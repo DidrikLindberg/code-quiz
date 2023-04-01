@@ -5,7 +5,6 @@
 var startButton = document.getElementById("startQuiz");
 var timerEl = document.getElementById("timer");
 
-var secondsLeft = 10;
 
 
 startButton.addEventListener("click", function () {
@@ -16,15 +15,19 @@ startButton.addEventListener("click", function () {
 
 // function to start countdown
 function startCountdown() {
+var secondsLeft = 10;
+
     var timeInterval = setInterval(function () {
         secondsLeft--;
 
         // display countdown on page
+        timerEl.style.display = 'block'
         timerEl.textContent = secondsLeft + " seconds left";
 
         if (secondsLeft === 0){
         clearInterval(timeInterval);
         sendMessage();
+        
         }
     }, 1000);
 }
