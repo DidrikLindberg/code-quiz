@@ -3,41 +3,68 @@
     background-color: #f1f1f1;
     /* display center horizontally on the bottom */
     position: absolute;
-    left: 50%;
+    text-align: center;
+    justify-content: center;
     bottom: 0;
-    
-
     padding: 20px;
     border: 1px solid #000000;
-    color: #ff0000;
+    color: #000000;
     margin-top: 20px;
+    margin-right: auto;
 }
 
 main {
-    background-color: #b1b1b1;
+    background-color: #e5e5e5;
     width: 50%;
     height:500px;
     margin: auto;
     position: relative;
     padding: 20px;
     border: 1px solid #000000;
-    color: #ff0000;
+    color: #000000;
     margin-top: 20px;
     
 }
+    h2 {
+        text-align: center;
+        margin-bottom: 10%;
+        color: #000000;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
 
 #timer {
-    background-color: #f1f1f1;
-    /* display on right corner */
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
-
-    padding: 20px;
-    border: 1px solid #000000;
-    color: #ff0000;
-    margin-top: 20px;
 }
+
+#choices {
+    display: none; /* hide the choices until the question is not empty */
+  }
+
+
+  #choices button[data-answer] {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #d8b3ff;
+    cursor: pointer;
+    width: 50%;
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+
 
 
 
