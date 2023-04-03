@@ -8,6 +8,8 @@ var questionEl = document.getElementById("question");
 var choicesEl = document.getElementById("choices");
 var scoreEl = document.getElementById("score");
 var highScoreEl = document.getElementById("highScores");
+var correctEl = document.getElementById("correct");
+var IncorrectEl = document.getElementById("incorrect");
 //grab the question elements frm the dom
 var questions = [
 {
@@ -41,7 +43,7 @@ startButton.addEventListener("click", function () {
     // call function to start countdown
     startCountdown();
     // call function to display question
-    displayQuestion();
+    setTimeout(displayQuestion, 2000);
 });
 
 // function to start countdown
@@ -93,15 +95,18 @@ function checkAnswer(event) {
     // check if user's answer is correct
     if (userAnswer === correctAnswer) {
       score++;
-      alert("Correct!");
+      correctEl.style.display = "block";
     } else {
     //   decrement secondsLeft by 10
-    secondsLeft -= 10;
-      alert("Incorrect.");
+        secondsLeft -= 10;
+        IncorrectEl.style.display = "block";
     }
   
     // increment current question and display next question
+    setTimeout(function() {
     currentQuestion++;
+    correctEl.style.display = "none";
+    IncorrectEl.style.display = "none";
     if (currentQuestion < questions.length) {
       displayQuestion();
     } else {
@@ -112,6 +117,8 @@ function checkAnswer(event) {
         startButton.textContent = "Try again?";
       alert("Quiz over. You scored " + score + " out of " + questions.length + ".");
     }
+  },1000);
   }
+
   
 
