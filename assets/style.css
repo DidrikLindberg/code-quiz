@@ -57,8 +57,10 @@ main {
     width: 50%;
     
   }
-  
-  
+
+    #choices button[data-answer="true"] {
+        background-color: #00ff00;
+    }
   
   
   

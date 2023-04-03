@@ -6,7 +6,7 @@ var startButton = document.getElementById("startQuiz");
 var timerEl = document.getElementById("timer");
 var questionEl = document.getElementById("question");
 var choicesEl = document.getElementById("choices");
-var scoreEl = document.getElementById("score");
+var scoreEl1 = document.getElementById("score");
 var highScoreEl = document.getElementById("highscores");
 var correctEl = document.getElementById("correct");
 var IncorrectEl = document.getElementById("incorrect");
@@ -120,16 +120,16 @@ function checkAnswer(event) {
         choicesEl.style.display = "none";
         questionEl.textContent = "Quiz over. You scored " + score + " out of " + questions.length + ".";
         // display score and ask for initials
-        scoreEl.style.display = "block";
-        scoreEl.textContent = "Enter initials to save your score to the leaderboards: ";
+        scoreEl1.style.display = "block";
+        scoreEl1.textContent = "Enter initials to save your score to the leaderboards: ";
 
         var initialsEl = document.createElement("input");
         initialsEl.setAttribute("type", "text");
-        scoreEl.appendChild(initialsEl);
+        scoreEl1.appendChild(initialsEl);
 
         var submitButton = document.createElement("button")
         submitButton.textContent = "Submit"
-        scoreEl.appendChild(submitButton);
+        scoreEl1.appendChild(submitButton);
 
         submitButton.addEventListener("click", function(){
             var initials = initialsEl.value;
@@ -145,7 +145,8 @@ function checkAnswer(event) {
 
     function displayLeaderboard() {
         var leaderboardEl = document.getElementById("leaderboard");
-      
+        highScoreEl.style.display = "block";
+        scoreEl1.style.display = "none";
         leaderboardEl.style.display = "block";
         questionEl.textContent = "Leaderboard";
 
