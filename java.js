@@ -30,6 +30,8 @@ var questions = [
 // set current Question and score variable
 var currentQuestion = 0;
 var score = 0;
+var secondsLeft = 60;
+
 
 
 startButton.addEventListener("click", function () {
@@ -42,7 +44,6 @@ startButton.addEventListener("click", function () {
 
 // function to start countdown
 function startCountdown() {
-var secondsLeft = 10;
 
     var timeInterval = setInterval(function () {
         secondsLeft--;
@@ -92,6 +93,8 @@ function checkAnswer(event) {
       score++;
       alert("Correct!");
     } else {
+    //   decrement secondsLeft by 10
+    secondsLeft -= 10;
       alert("Incorrect.");
     }
   
