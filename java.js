@@ -6,6 +6,8 @@ var startButton = document.getElementById("startQuiz");
 var timerEl = document.getElementById("timer");
 var questionEl = document.getElementById("question");
 var choicesEl = document.getElementById("choices");
+var scoreEl = document.getElementById("score");
+var highScoreEl = document.getElementById("highScores");
 //grab the question elements frm the dom
 var questions = [
 {
