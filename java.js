@@ -7,7 +7,7 @@ var timerEl = document.getElementById("timer");
 var questionEl = document.getElementById("question");
 var choicesEl = document.getElementById("choices");
 var scoreEl = document.getElementById("score");
-var highScoreEl = document.getElementById("highScores");
+var highScoreEl = document.getElementById("highscores");
 var correctEl = document.getElementById("correct");
 var IncorrectEl = document.getElementById("incorrect");
 //grab the question elements frm the dom
@@ -111,27 +111,28 @@ function checkAnswer(event) {
       displayQuestion();
     } else {
       // end of quiz, display score
-        choicesEl.style.display = "none";
-        questionEl.textContent = "Quiz over. You scored " + score + " out of " + questions.length + ".";
+        
         leaderboards();
     }
   },1000);
   }
     function leaderboards() {
+        choicesEl.style.display = "none";
+        questionEl.textContent = "Quiz over. You scored " + score + " out of " + questions.length + ".";
         // display score and ask for initials
         scoreEl.style.display = "block";
         scoreEl.textContent = "Enter initials to save your score to the leaderboards: ";
 
         var initialsEl = document.createElement("input");
         initialsEl.setAttribute("type", "text");
-        scoreEl.appendChild(initialsInput);
+        scoreEl.appendChild(initialsEl);
 
         var submitButton = document.createElement("button")
         submitButton.textContent = "Submit"
         scoreEl.appendChild(submitButton);
 
         submitButton.addEventListener("click", function(){
-            var initials = initialsInput.value;
+            var initials = initialsEl.value;
             var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
             scores.push({initials: initials, score: score});
@@ -140,4 +141,24 @@ function checkAnswer(event) {
 
             displayLeaderboard();
         });
+    }
+
+    function displayLeaderboard() {
+        var leaderboardEl = document.getElementById("leaderboard");
+      
+        leaderboardEl.style.display = "block";
+        questionEl.textContent = "Leaderboard";
+
+        var scores = JSON.parse(localStorage.getItem("scores")) || [];
+
+        scores.sort(function(a, b) {
+            return b.score - a.score;
+        });
+
+        for (var i = 0; i < scores.length; i++) {
+            var score = scores[i];
+            var scoreEl = document.createElement("p");
+            scoreEl.textContent = score.initials + " - " + score.score;
+            highScoreEl.appendChild(scoreEl);
+        }
     }
