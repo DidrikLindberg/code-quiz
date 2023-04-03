@@ -113,12 +113,31 @@ function checkAnswer(event) {
       // end of quiz, display score
         choicesEl.style.display = "none";
         questionEl.textContent = "Quiz over. You scored " + score + " out of " + questions.length + ".";
-        startButton.style.display = "block";
-        startButton.textContent = "Try again?";
-      alert("Quiz over. You scored " + score + " out of " + questions.length + ".");
+        leaderboards();
     }
   },1000);
   }
+    function leaderboards() {
+        // display score and ask for initials
+        scoreEl.style.display = "block";
+        scoreEl.textContent = "Enter initials to save your score to the leaderboards: ";
 
-  
+        var initialsEl = document.createElement("input");
+        initialsEl.setAttribute("type", "text");
+        scoreEl.appendChild(initialsInput);
 
+        var submitButton = document.createElement("button")
+        submitButton.textContent = "Submit"
+        scoreEl.appendChild(submitButton);
+
+        submitButton.addEventListener("click", function(){
+            var initials = initialsInput.value;
+            var scores = JSON.parse(localStorage.getItem("scores")) || [];
+
+            scores.push({initials: initials, score: score});
+
+            localStorage.setItem("scores", JSON.stringify(scores));
+
+            displayLeaderboard();
+        });
+    }
