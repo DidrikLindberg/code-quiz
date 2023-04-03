@@ -156,10 +156,11 @@ function checkAnswer(event) {
             return b.score - a.score;
         });
 
-        for (var i = 0; i < scores.length; i++) {
+        for (var i = 0; i < Math.min(scores.length, 10); i++) {
             var score = scores[i];
+            var rank = i + 1;
             var scoreEl = document.createElement("p");
-            scoreEl.textContent = score.initials + " - " + score.score;
+            scoreEl.textContent = rank + ".     " + score.initials + " - " + score.score;
             highScoreEl.appendChild(scoreEl);
         }
     }
