@@ -57,9 +57,16 @@ function startCountdown() {
         timerEl.style.display = 'block'
         timerEl.textContent = secondsLeft + " seconds left";
 
-        if (secondsLeft === 0){
+        if (secondsLeft <= 0){
         clearInterval(timeInterval);
         timerEl.textContent = "Time is up!";
+
+        // end of quiz, display score
+        leaderboards();
+
+        // hide the question and choices
+        choicesEl.style.display = "none";
+        questionEl.textContent = "Quiz over. You scored " + score + " out of " + questions.length + ".";
         
         
         }
@@ -163,4 +170,32 @@ function checkAnswer(event) {
             scoreEl.textContent = rank + ".     " + score.initials + " - " + score.score;
             highScoreEl.appendChild(scoreEl);
         }
+        var btnStyle = "cursor:pointer;margin-top:20px;padding:10px 20px;border-radius:4px;border:none;text-align:center;text-decoration:none;display:inline-block;font-size:16px;font-weight:bold;vertical-align:middle;";
+  
+        var goBackButton = document.createElement("btn");
+        goBackButton.textContent = "Go Back";
+        goBackButton.addEventListener("click", goBack);
+        goBackButton.style.cssText = btnStyle + "background-color:#4CAF50;color:white;";
+        leaderboardEl.appendChild(goBackButton);
+
+
+        var clearButton = document.createElement("btn");
+        clearButton.textContent = "Clear Leaderboard";
+        clearButton.addEventListener("click", clearLeaderboard);
+        clearButton.style.cssText = btnStyle + "background-color:#f44336;color:white;";
+        leaderboardEl.appendChild(clearButton);
+
+    }
+
+
+
+
+    function goBack() {
+        location.reload();
+    }
+
+
+    function clearLeaderboard() {
+        localStorage.removeItem("scores");
+        highScoreEl.innerHTML = "";
     }
